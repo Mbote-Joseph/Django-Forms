@@ -17,6 +17,7 @@ def index(request):
     context={
         'title':'Django Forms',
         'form': form,
-        "detailform":DetailsForm()
+        "detailform":DetailsForm(),
+        
     }
     return render(request, 'index.html', context)
