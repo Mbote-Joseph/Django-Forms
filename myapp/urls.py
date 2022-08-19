@@ -17,4 +17,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('detail/', views.DetailsListView.as_view(), name='detail'),
 ]
