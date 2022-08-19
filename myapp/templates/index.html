@@ -28,7 +28,15 @@
     />
   </head>
   <body>
-    <h1>{{title}}</h1>
+    <div class="container">
+      <h1>{{title}}</h1>
+
+      <form method="POST">
+        {% csrf_token %} {{form}}
+
+        <button type="submit" class="btn btn-primary my-3">Submit</button>
+      </form>
+    </div>
 
     <!-- Bootstrap -->
     <script
