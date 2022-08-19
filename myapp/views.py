@@ -43,7 +43,7 @@ class DetailsUpdateView(UpdateView):
     template_name = 'detail_update.html'
     form_class = DetailsForm
     context_object_name = 'detail'
-    success_url = '/'
+    success_url = '/detail/'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Django Forms'
@@ -52,7 +52,8 @@ class DetailsUpdateView(UpdateView):
     def form_valid(self, form):
         if form.is_valid():
             form.save()
-            form = DetailsForm()
+            # template_name = 'detail_list.html'
+            # form = DetailsForm()
         return super().form_valid(form)
 
     
