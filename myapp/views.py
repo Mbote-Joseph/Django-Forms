@@ -3,6 +3,8 @@ from .models import Details
 from .forms import DetailsForm
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView
+
 
 # Create your views here.
 
@@ -58,5 +60,36 @@ class DetailsUpdateView(UpdateView):
 
     
         
+class DetailsDeleteView(DeleteView):
+    model = Details
+    template_name = 'detail_delete.html'
+    context_object_name = 'detail'
+    success_url = '/detail/'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Django Forms'
+        return context
+
+    def form_valid(self, form):
+        if form.is_valid():
+            form.save()
+            # template_name = 'detail_list.html'
+            # form = DetailsForm()
+        return super().form_valid(form)
         
+class DetailsDetailView(ListView):
+    model = Details
+    template_name = 'detail_detail.html'
+    context_object_name = 'detailCheck'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Django Forms'
+        return context
+
+    def form_valid(self, form):
+        if form.is_valid():
+            form.save()
+            # template_name = 'detail_list.html'
+            # form = DetailsForm()
+        return super().form_valid(form)
 

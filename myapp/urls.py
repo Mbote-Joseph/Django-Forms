@@ -18,5 +18,8 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('detail/', views.DetailsListView.as_view(), name='detail'),
-    path('detail/<int:pk>/', views.DetailsUpdateView.as_view(), name='detail-detail'),
+    path('detail/<int:pk>/', views.DetailsUpdateView.as_view(), name='detail-update'),
+    path('detail/<int:pk>/delete/', views.DetailsDeleteView.as_view(), name='detail-delete'),
+    path('detail/view/<int:pk>', views.DetailsDetailView.as_view(), name='detail-detail'),
+
 ]
